@@ -13,7 +13,7 @@ import { SWRGCMiddlewareConfig } from '../swrMiddlewares';
  * @param params.request - contract calls config or callback which returns it
  * @param params.parseResponse - optional callback to pre-process and format the response
  */
-export function useMulticall<TConfig extends MulticallRequestConfig<any>, TResult = MulticallResult<TConfig>>(
+export function useViemMulticall<TConfig extends MulticallRequestConfig<any>, TResult = MulticallResult<TConfig>>(
   chainId: number,
   name: string,
   params: {
