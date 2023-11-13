@@ -61,7 +61,7 @@ export const FALLBACK_PROVIDERS = {
 };
 
 export function getAlchemyHttpUrl() {
-  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
+  if (typeof window !== 'undefined' && ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
     return 'https://arb-mainnet.g.alchemy.com/v2/RcaXYTizJs51m-w9SnRyDrxSZhE5H9Mf';
   }
   return 'https://arb-mainnet.g.alchemy.com/v2/hxBqIr-vfpJ105JPYLei_ibbJLe66k46';
