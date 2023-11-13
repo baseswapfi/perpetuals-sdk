@@ -58,6 +58,8 @@ export const FALLBACK_PROVIDERS = {
     'https://ava-testnet.public.blastapi.io/ext/bc/C/rpc',
   ],
   [ARBITRUM_GOERLI]: ['https://arb-goerli.g.alchemy.com/v2/cZfd99JyN42V9Clbs_gOvA3GSBZH1-1j'],
+  [BASE_MAINNET]: ['https://mainnet.base.org'],
+  [BASE_GOERLI]: ['https://goerli.base.org'],
 };
 
 export function getAlchemyHttpUrl() {

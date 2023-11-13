@@ -1,6 +1,6 @@
 {
   "name": "@baseswapfi/perpetuals-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "description": "⚒️ An SDK for integrating with the GMX perpetuals platform",
   "module": "dist/sdk.esm.js",
