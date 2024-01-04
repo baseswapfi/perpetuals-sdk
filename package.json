@@ -2,19 +2,20 @@
   "name": "@baseswapfi/perpetuals-sdk",
   "version": "1.0.2",
   "license": "MIT",
-  "description": "⚒️ An SDK for integrating with the GMX perpetuals platform",
+  "description": "⚒️ An SDK for integrating with the Baseswap perpetuals platform",
+  "author": "0xShoeGazer",
   "module": "dist/sdk.esm.js",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
+    "build",
     "src"
   ],
   "publishConfig": {
     "access": "public"
   },
   "engines": {
-    "node": ">=10"
+    "node": "16.x"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
