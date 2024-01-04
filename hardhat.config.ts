@@ -4,11 +4,11 @@ import '@nomicfoundation/hardhat-toolbox';
 dotenv.config();
 
 const mainnetFork = {
-  url: `${process.env.BASE_RPC}`,
+  url: `${process.env.JSON_RPC_PROVIDER}`,
 };
 
 const testnetFork = {
-  url: `${process.env.BASE_GOERLI_RPC}`,
+  url: `${process.env.JSON_RPC_PROVIDER}`,
   blockNumber: 12405003, // 11/14/2023 ~6:15PM
 };
 
