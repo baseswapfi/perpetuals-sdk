@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
-import { expandDecimals } from './numbers';
 import { USD_DECIMALS } from './constants';
+import { expandDecimals } from './utils';
 
 // use a random placeholder account instead of the zero address as the zero address might have tokens
 export const PLACEHOLDER_ACCOUNT = ethers.Wallet.createRandom().address;

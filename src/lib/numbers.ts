@@ -2,6 +2,7 @@ import { BigNumber, BigNumberish, ethers } from 'ethers';
 import { USD_DECIMALS } from './constants';
 import { BASIS_POINTS_DIVISOR } from '../config/factors';
 import { TRIGGER_PREFIX_ABOVE, TRIGGER_PREFIX_BELOW } from '../config/ui';
+import { expandDecimals } from './utils';
 
 export const PRECISION = expandDecimals(1, 30);
 const MAX_EXCEEDING_THRESHOLD = '1000000000';
@@ -15,11 +16,6 @@ export function bigNumberify(n?: BigNumberish) {
     console.error('bigNumberify error', e);
     return undefined;
   }
-}
-
-export function expandDecimals(n: BigNumberish, decimals: number): BigNumber {
-  // @ts-ignore
-  return bigNumberify(n).mul(bigNumberify(10).pow(decimals));
 }
 
 function getLimitedDisplay(
@@ -305,24 +301,15 @@ export function numberWithCommas(x: BigNumberish) {
 }
 
 export function roundUpDivision(a: BigNumber, b: BigNumber) {
-  return a
-    .add(b)
-    .sub(1)
-    .div(b);
+  return a.add(b).sub(1).div(b);
 }
 
 export function roundUpMagnitudeDivision(a: BigNumber, b: BigNumber) {
   if (a.lt(0)) {
-    return a
-      .sub(b)
-      .add(1)
-      .div(b);
+    return a.sub(b).add(1).div(b);
   }
 
-  return a
-    .add(b)
-    .sub(1)
-    .div(b);
+  return a.add(b).sub(1).div(b);
 }
 
 export function applyFactor(value: BigNumber, factor: BigNumber) {
@@ -342,7 +329,7 @@ export function roundToTwoDecimals(n) {
 }
 
 export function sumBigNumbers(...args) {
-  return args.filter(value => !isNaN(Number(value))).reduce((acc, value) => acc.add(value || 0), BigNumber.from(0));
+  return args.filter((value) => !isNaN(Number(value))).reduce((acc, value) => acc.add(value || 0), BigNumber.from(0));
 }
 
 export function removeTrailingZeros(amount: string | number) {
