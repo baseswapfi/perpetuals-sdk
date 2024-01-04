@@ -19,6 +19,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "build:tsc": "tsc -p tsconfig.json",
     "test": "tsdx test",
     "test:hardhat": "npx hardhat test",
     "lint": "tsdx lint",
@@ -28,6 +29,7 @@
     "compile-types": "npx typechain --target ethers-v5 --out-dir src/types 'src/abis/**/*.json'"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.2",
     "@baseswapfi/sdk-core": "^1.0.30",
     "@ethersproject/abi": "^5.0.12",
     "@ethersproject/address": "^5.0.2",
@@ -35,6 +37,8 @@
     "@ethersproject/providers": "^5.0.0",
     "@ethersproject/solidity": "^5.0.9",
     "ethers": "^5.7.2",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.2.0",
     "lodash": "^4.17.21",
     "query-string": "7.1.1",
     "react": "17.0.2",

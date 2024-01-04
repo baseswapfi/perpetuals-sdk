@@ -1,4 +1,4 @@
-import { BigNumber, BigNumberish, ethers } from 'ethers';
+import { BigNumber, BigNumberish } from 'ethers';
 
 export function expandDecimals(n: BigNumberish, decimals: number): BigNumber {
   // @ts-ignore

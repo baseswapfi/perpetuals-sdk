@@ -51,13 +51,13 @@ export const trimZeroDecimals = (amount: string) => {
   return amount;
 };
 
-export const limitDecimals = (amount: BigNumberish, maxDecimals?: number) => {
+export const limitDecimals = (amount: BigNumberish, maxDecimals?: number): string => {
   let amountStr = amount.toString();
   if (maxDecimals === undefined) {
     return amountStr;
   }
   if (maxDecimals === 0) {
-    return amountStr.split('.')[0];
+    return amountStr.split('.')[0] || '';
   }
   const dotIndex = amountStr.indexOf('.');
   if (dotIndex !== -1) {
@@ -101,12 +101,12 @@ export const formatAmount = (
     displayDecimals = 4;
   }
   let amountStr = ethers.utils.formatUnits(amount, tokenDecimals);
-  amountStr = limitDecimals(amountStr, displayDecimals);
+  let amtStr = limitDecimals(amountStr, displayDecimals);
   if (displayDecimals !== 0) {
-    amountStr = padDecimals(amountStr, displayDecimals);
+    amtStr = padDecimals(amtStr, displayDecimals);
   }
   if (useCommas) {
-    return numberWithCommas(amountStr);
+    return numberWithCommas(amtStr);
   }
   return amountStr;
 };
@@ -144,8 +144,8 @@ export const formatAmountFree = (amount: BigNumberish, tokenDecimals: number, di
     return '...';
   }
   let amountStr = ethers.utils.formatUnits(amount, tokenDecimals);
-  amountStr = limitDecimals(amountStr, displayDecimals);
-  return trimZeroDecimals(amountStr);
+  const amtStr = limitDecimals(amountStr, displayDecimals);
+  return trimZeroDecimals(amtStr);
 };
 
 export function formatUsd(
@@ -285,8 +285,8 @@ export const parseValue = (value: string, tokenDecimals: number) => {
   if (isNaN(pValue)) {
     return undefined;
   }
-  value = limitDecimals(value, tokenDecimals);
-  const amount = ethers.utils.parseUnits(value, tokenDecimals);
+  const val = limitDecimals(value, tokenDecimals);
+  const amount = ethers.utils.parseUnits(val || '0', tokenDecimals);
   return bigNumberify(amount);
 };
 
@@ -295,8 +295,8 @@ export function numberWithCommas(x: BigNumberish) {
     return '...';
   }
 
-  var parts = x.toString().split('.');
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const parts = x.toString().split('.');
+  parts[0] = parts[0] ? parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '';
   return parts.join('.');
 }
 
@@ -324,11 +324,11 @@ export function basisPointsToFloat(basisPoints: BigNumber) {
   return basisPoints.mul(PRECISION).div(BASIS_POINTS_DIVISOR);
 }
 
-export function roundToTwoDecimals(n) {
+export function roundToTwoDecimals(n: number) {
   return Math.round(n * 100) / 100;
 }
 
-export function sumBigNumbers(...args) {
+export function sumBigNumbers(...args: any[]) {
   return args.filter((value) => !isNaN(Number(value))).reduce((acc, value) => acc.add(value || 0), BigNumber.from(0));
 }
 
