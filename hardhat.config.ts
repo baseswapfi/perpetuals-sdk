@@ -9,7 +9,7 @@ const mainnetFork = {
 
 const testnetFork = {
   url: `${process.env.JSON_RPC_PROVIDER}`,
-  blockNumber: 12405003, // 11/14/2023 ~6:15PM
+  blockNumber: 14633221, // 1/5/2024 ~8:00am
 };
 
 const config = {
