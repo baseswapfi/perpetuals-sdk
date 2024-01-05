@@ -1,4 +1,4 @@
-const ADDRESSES = {
+export const ADDRESSES = {
   [8453]: {
     VAULT: '0xd29cEaB5E7C902806f5De29305e45B772eF544ae',
     USDG: '0xdA55eb290d30203A0a30e0411153c4667021Cd57',
@@ -98,5 +98,3 @@ const ADDRESSES = {
     },
   },
 };
-
-export const getChainAddresses = (chainId) => ADDRESSES[chainId];
